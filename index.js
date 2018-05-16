@@ -1,1 +1,1 @@
-console.log(require('redux'));
+console.log(require('symbol-observable'));

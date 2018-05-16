@@ -7,8 +7,7 @@ const isBuiltin = require('is-builtin-module');
 
 const isESNext = path => {
     return !path.includes('node_modules') ||
-        // XXX: removing "module" from this regex "fixes" the issue..
-        /"((e|j)snext(:[a-z]+)?|module)": ?"/m.test(
+        /"((e|j)snext(:[a-z]+)?)": ?"/m.test(
             readFile(findUp('package.json', { cwd: dirname(path) }), 'utf8')
         );
 };
@@ -46,9 +45,7 @@ module.exports = {
     resolve: {
         extensions: ['.js'],
         mainFields: [
-            'esnext',
             'jsnext',
-            'esnext:main',
             'jsnext:main',
             'module',
             'main',
@@ -71,7 +68,7 @@ module.exports = {
                             {
                                 modules: false,
                                 useBuiltIns: true,
-                                targets: { node: 'current' },
+                                targets: { node: '8.0.0' },
                             },
                         ],
                     ],
