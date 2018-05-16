@@ -7,6 +7,7 @@ const isBuiltin = require('is-builtin-module');
 
 const isESNext = path => {
     return !path.includes('node_modules') ||
+        // XXX: removing "module" from this regex "fixes" the issue..
         /"((e|j)snext(:[a-z]+)?|module)": ?"/m.test(
             readFile(findUp('package.json', { cwd: dirname(path) }), 'utf8')
         );
