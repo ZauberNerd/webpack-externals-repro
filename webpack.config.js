@@ -16,6 +16,10 @@ const isExternal = () => {
     const resolve = createResolver();
     const shouldBeBundled = (context, request) => {
         if (isBuiltin(request)) return false;
+        if (request.includes('webpack/buildin')) {
+            // XXX: we must not declare webpack/buildin specifics as externals
+            return true;
+        }
         try {
             const resolved = resolve(context, request);
             return isESNext(resolved);
