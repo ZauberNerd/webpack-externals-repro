@@ -8,6 +8,12 @@
     "test": "webpack && node ./dist/server.js"
   },
   "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-dynamic-import-node": "^1.2.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "enhanced-resolve": "^4.0.0",
     "find-up": "^2.1.0",
     "is-builtin-module": "^2.0.0",

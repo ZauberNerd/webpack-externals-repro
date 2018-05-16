@@ -54,5 +54,35 @@ module.exports = {
             'main',
         ],
     },
+    module: {
+        rules: [
+            {
+                test: [/\.js$/],
+                include: isESNext,
+                loader: require.resolve('babel-loader'),
+                options: {
+                    babelrc: false,
+                    compact: false,
+                    cacheDirectory: true,
+                    cacheIdentifier: 'development:node',
+                    presets: [
+                        [
+                            require.resolve('babel-preset-env'),
+                            {
+                                modules: false,
+                                useBuiltIns: true,
+                                targets: { node: 'current' },
+                            },
+                        ],
+                    ],
+                    plugins: [
+                        require.resolve('babel-plugin-dynamic-import-node'),
+                        require.resolve('babel-plugin-transform-class-properties'),
+                        require.resolve('babel-plugin-transform-object-rest-spread'),
+                    ],
+                },
+            }
+        ],
+    },
     externals: isExternal(),
 };
